@@ -32,7 +32,7 @@ for genus, species in species_list:
     response = requests.get(api_url)
 
     if response.status_code != 200:
-        print(f"❌ API request failed for {genus} {species}")
+        print(f"API request failed for {genus} {species}")
         continue
 
     data = response.json()
@@ -50,11 +50,11 @@ for genus, species in species_list:
                     with open(save_path, 'wb') as f:
                         for chunk in r.iter_content(chunk_size=8192):
                             f.write(chunk)
-                    print(f"✅ Downloaded {filename} to {save_path}")
+                    print(f"Downloaded {filename} to {save_path}")
                     total_downloaded += 1
                 else:
-                    print(f"❌ Failed to download {filename} (status: {r.status_code})")
+                    print(f"Failed to download {filename} (status: {r.status_code})")
         except Exception as e:
-            print(f"⚠️ Error downloading {recording.get('id', '?')}: {e}")
+            print(f"Error downloading {recording.get('id', '?')}: {e}")
 
-print(f"\n✅ Finished downloading. Total files downloaded: {total_downloaded}")
+print(f"Finished downloading. Total files downloaded: {total_downloaded}")
