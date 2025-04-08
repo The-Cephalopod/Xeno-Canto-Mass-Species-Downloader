@@ -25,7 +25,7 @@ for genus, species in species_list:
     folder_name = f"{genus}_{species}"
     save_directory = os.path.join(base_directory, folder_name)
     os.makedirs(save_directory, exist_ok=True)
-    print(f"\n🔍 Downloading recordings for {genus} {species} into {save_directory}")
+    print(f"\nDownloading recordings for {genus} {species} into {save_directory}")
 
     # Query xeno-canto API for the recordings of the species
     api_url = f'https://xeno-canto.org/api/2/recordings?query=gen:{genus}+{species}'
@@ -57,4 +57,4 @@ for genus, species in species_list:
         except Exception as e:
             print(f"Error downloading {recording.get('id', '?')}: {e}")
 
-print(f"Finished downloading. Total files downloaded: {total_downloaded}")
+print(f"\nFinished downloading. Total files downloaded: {total_downloaded}")
